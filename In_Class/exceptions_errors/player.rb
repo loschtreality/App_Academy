@@ -1,4 +1,4 @@
-class HumanPlayer 
+class HumanPlayer
   attr_accessor :previous_guess
 
   def initialize(size)
@@ -6,8 +6,16 @@ class HumanPlayer
   end
 
   def get_input
-    prompt
-    parse(STDIN.gets.chomp)
+    # prompt
+    # parse(STDIN.gets.chomp)
+
+    begin
+      prompt
+      parse(STDIN.gets.chomp)
+    rescue => e
+      retry
+    end
+
   end
 
   def prompt
@@ -16,7 +24,15 @@ class HumanPlayer
   end
 
   def parse(string)
-    string.split(",").map { |x| Integer(x) }
+
+    input = string.split(",").map { |x| Integer(x) }
+
+    if input.length == 1
+      raise "Please enter two digits separated by comma"
+
+    end
+
+    input
   end
 
   def receive_revealed_card(pos, value)
@@ -28,7 +44,7 @@ class HumanPlayer
   end
 end
 
-class ComputerPlayer 
+class ComputerPlayer
   attr_accessor :previous_guess, :board_size
 
   def initialize(size)
@@ -39,7 +55,7 @@ class ComputerPlayer
   end
 
   def receive_revealed_card(pos,value)
-    @known_cards[pos] = value 
+    @known_cards[pos] = value
   end
 
   def receive_match(pos1, pos2)
@@ -49,7 +65,7 @@ class ComputerPlayer
 
   def get_input
     if previous_guess
-      second_guess 
+      second_guess
     else
       first_guess
     end
