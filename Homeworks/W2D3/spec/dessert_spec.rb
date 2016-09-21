@@ -14,9 +14,13 @@ describe Dessert do
       expect(brownie.type).to eq("brownie")
     end
 
-    it "sets a quantity"
-
-    it "starts ingredients as an empty array"
+    it "sets a quantity" do
+      expect(brownie.quantity).to eq(100)
+    end
+    it "starts ingredients as an empty array" do
+      expect(brownie.ingredients).to be_a(Array)
+      expect(brownie.ingredients).to be_empty
+    end
 
     it "raises an argument error when given a non-integer quantity" do
       expect { Dessert.new("cake", "tons") }.to raise_error(ArgumentError)
@@ -24,11 +28,16 @@ describe Dessert do
   end
 
   describe "#add_ingredient" do
-    it "adds an ingredient to the ingredients array"
+    it "adds an ingredient to the ingredients array" do
+      brownie.add_ingredient("flour")
+      expect(brownie.ingredients.length).to eq(1)
+    end
   end
 
   describe "#mix!" do
     it "shuffles the ingredient array"
+      
+    end
   end
 
   describe "#eat" do
