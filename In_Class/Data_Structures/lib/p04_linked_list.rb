@@ -71,17 +71,21 @@ class LinkedList
   end
 
   def remove(key)
-    if include?(key)
-      each do |link|
-        puts link
+    prev_node = nil
+    next_node = nil
+      self.each do |link|
         if link.key == key
-          link.next.prev = link.prev
-          link.prev.next = link.next
+          prev_node = link.prev
+          next_node = link.next
           link.next = nil
           link.prev = nil
+          break
         end
       end
-    end
+      unless prev_node.nil? && next_node.nil?
+        prev_node.next = next_node
+        next_node.prev = prev_node
+      end
   end
 
   def each
@@ -92,7 +96,6 @@ class LinkedList
     end
   end
 
-  # uncomment when you have `each` working and `Enumerable` included
   def to_s
     inject([]) { |acc, link| acc << "[#{link.key}, #{link.val}]" }.join(", ")
   end
