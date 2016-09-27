@@ -73,41 +73,48 @@ class Playwright
   end
 
   def self.find_by_name(name)
-    PlayDBConnection.instance.execute(<<-SQL)
-      SELECT
-        name
-      FROM
-        playwrights
-      WHERE
-        name = #{name}
-    SQL
-  end
-
-  def self.find_by_title(title)
-    PlayDBConnection.instance.execute(<<-SQL)
-      SELECT
-        title
-      FROM
-        playwrights
-      WHERE
-        title = #{title}
-    SQL
-  end
-
-  def self.find_by_playwright(name)
-    #returns all plays written by this person
-    PlayDBConnection.instance.execute(<<-SQL)
+    person = PlayDBConnection.instance.execute(<<-SQL, name)
       SELECT
         *
       FROM
         playwrights
       WHERE
-        name = #{name}
+        name = ?
     SQL
+
+    empty?(person)
+
+    Playwright.new(person.first)
   end
 
-  def new
+  def self.find_by_title(title)
+    title = PlayDBConnection.instance.execute(<<-SQL, title)
+      SELECT
+        *
+      FROM
+        playwrights
+      WHERE
+        title = ?
+    SQL
 
+    empty?(title)
+
+  end
+
+  def self.find_by_playwright(name)
+    #returns all plays written by this person
+    playwright = PlayDBConnection.instance.execute(<<-SQL, name)
+      SELECT
+        *
+      FROM
+        playwrights
+      WHERE
+        name = ?
+    SQL
+
+    empty?(playwright)
+
+    Playwright.new(person.first)
   end
 
   def create
@@ -121,6 +128,10 @@ class Playwright
     SQL
 
     @id = PlayDBConnection.instance.last_insert_row_id
+  end
+
+  def empty?(criteria)
+    return nil unless criteria.length > 0
   end
 
   def update
@@ -138,12 +149,15 @@ class Playwright
 
   def get_plays
     #selects all plays
-    PlayDBConnection.instance.execute(<<-SQL)
+    plays = PlayDBConnection.instance.execute(<<-SQL, @id)
       SELECT
         *
       FROM
         plays
+      WHERE
+        playwright_id = ?
     SQL
+    plays.map{|play| Play.new(play)}
   end
 
 end
