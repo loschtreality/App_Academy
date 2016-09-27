@@ -55,3 +55,49 @@ class Play
   end
 
 end
+
+
+class Playwright
+
+  def self.all
+    data = PlayDBConnection.instance.execute("SELECT * FROM playwrights")
+    data.map {|datum| Play.new(datum)}
+  end
+
+  def initialize(options)
+    # @id = options['id']
+    # @title = options['title']
+    # @year = options['year']
+    # @playwright_id = options['playwright_id']
+  end
+
+  def self.find_by_name(name)
+
+  end
+
+  def self.find_by_title(title)
+
+  end
+
+  def self.find_by_playwright(name)
+    #returns all plays written by this person
+
+  end
+
+  def new
+
+  end
+
+  def create
+    #create a new entry
+  end
+
+  def update
+    #updates the playwright
+  end
+
+  def get_plays
+    #selects all plays
+  end
+
+end
