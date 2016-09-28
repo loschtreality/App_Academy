@@ -1,0 +1,5 @@
+require_relative "lib/users"
+require_relative "lib/questions"
+require_relative "lib/questions_follows"
+require_relative "lib/replies"
+require_relative "lib/likes"
