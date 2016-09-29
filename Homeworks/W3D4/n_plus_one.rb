@@ -54,8 +54,14 @@ class Artist
   end
 
   def better_tracks_query
-    # TODO: your code here
+    albums = self.albums.includes(:tracks)
+    tracks_count = {}
+    albums.each do |album|
+      tracks_count[album.name] = album.tracks.length
+    end
+    tracks_count
   end
+
 end
 
 
@@ -108,7 +114,6 @@ class Seed
 end
 
 
-# ======== Create an array of all the seeds within a given house. ==========
 
 # app/models/house.rb
 class House
@@ -125,6 +130,7 @@ class House
     source: :plants
   )
 
+  # ======== Create an array of all the seeds within a given house. ==========
   def n_plus_one_seeds
     plants = self.plants
     seeds = []
@@ -136,12 +142,11 @@ class House
   end
 
   def better_seeds_query
-    # TODO: your code here
+    self.plants.includes(:seeds).to_a
   end
 end
 
 
-# ======== Create a hash with bus id's as keys and an array of bus drivers as the corresponding value. E.g. {'1' => ['Joan Lee', 'Charlie McDonald', 'Kevin Quashie'], '2' => ['Ed Michaels', 'Lisa Frank', 'Sharla Alegria']} ======
 
 # app/models/driver.rb
 class Driver
@@ -181,6 +186,7 @@ class Route
     primary_key: :id
   )
 
+  # ======== Create a hash with bus id's as keys and an array of bus drivers as the corresponding value. E.g. {'1' => ['Joan Lee', 'Charlie McDonald', 'Kevin Quashie'], '2' => ['Ed Michaels', 'Lisa Frank', 'Sharla Alegria']} ======
   def n_plus_one_drivers
     buses = self.buses
 
@@ -197,6 +203,6 @@ class Route
   end
 
   def better_drivers_query
-    # TODO: your code here
+    self.busses.includes(:id => [:drivers])
   end
 end
