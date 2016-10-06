@@ -9,6 +9,8 @@ class UsersController < ApplicationController
 
     if @user.save
       login!(@user)
+      msg = UserMailer.welcome_email(@user)
+      msg.deliver
       render json: @user
     else
       render json: @user.errors.full_messages

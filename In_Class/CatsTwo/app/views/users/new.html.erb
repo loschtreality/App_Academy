@@ -1,10 +1,5 @@
-
-
-
-
 <form class="" action="/users" method="post">
-  <input type="hidden" name="authenticity_token"  value="<%= form_authenticity_token %>">
-
+ <%= auth_token %>
   <label for="user_username">Username</label>
   <input type="text" name="user[user_name]" id="user_username">
   <br>
@@ -14,4 +9,8 @@
   <br>
 
     <button type="submit"> Submit</button>
+
+<% content_for :footer do %>
+  <p>This is the new users page.</p>
+<% end %>
 </form>
