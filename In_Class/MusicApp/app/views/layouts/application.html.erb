@@ -15,7 +15,7 @@
         logged in as: <%= current_user.email %>
       </li>
       <li>
-        <%= button_to "logout", sesson_url, method: :delete %>
+        <%= button_to "logout", session_url, method: :delete %>
       </li>
     </ul>
     <% else %>
@@ -24,8 +24,8 @@
         currently anonymous, please log in or sign up
       </li>
       <li>
-        <%= button_to "login", sesson_new_url, method: :create %>
-        <%= button_to "sign up", user_url, method: :create %>
+        <%= link_to "login", new_session_url %>
+        <%= link_to "sign up", new_user_url %>
       </li>
     </ul>
     <% end %>
