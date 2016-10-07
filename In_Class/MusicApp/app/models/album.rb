@@ -11,5 +11,5 @@
 
 class Album < ApplicationRecord
   has_many :tracks
-  belons_to :band
+  belongs_to :band
 end
