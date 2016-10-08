@@ -1,0 +1,16 @@
+<h1><%=@post.title%></h1>
+<br>
+Content:
+<%= @post.content %>
+<br>
+<br>
+
+<h3>Subs</h3>
+
+<ul>
+  <% @post.subs.each do |subz| %>
+  <li> <%= link_to "#{subz.title}", subs_url(subz) %> </li>
+  <% end %>
+</ul>
+
+<h3>Comments</h3>

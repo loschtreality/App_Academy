@@ -1,0 +1,13 @@
+<h1>Create a Sub</h1>
+
+<form action="/subs" method="post">
+  <%= authentication %>
+  <label for="">Title:</label><br>
+  <input type="text" name="sub[title]" value="">
+  <br><br>
+  <label for="">Description:</label><br>
+  <textarea name="sub[description]" value="">
+  </textarea>
+  <br>
+  <input type="submit" value="submit">
+</form>
