@@ -14,3 +14,8 @@
     <td><%= @cat.description %></td>
   </tr>
 </table>
+<br>
+  <%= link_to "All Cats", cats_url %>
+<br>
+<%= button_to "Edit Cat", edit_cat_url(@cat), method: :get %>
+<%= button_to "Remove Cat", cat_url(@cat), method: :delete %>

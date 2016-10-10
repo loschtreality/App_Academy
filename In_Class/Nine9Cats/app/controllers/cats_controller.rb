@@ -1,50 +1,50 @@
 class CatsController < ApplicationController
+
+  before_filter :ensure_login
+
   def index
     @cats = Cat.all
+  end
 
-    render :index
+  def new
+    @cat = Cat.new
+  end
+
+  def show
+    @cat = Cat.find(params[:id])
   end
 
   def create
     @cat = Cat.new(cat_params)
     if @cat.save!
-      render :show
+      redirect_to cat_url(@cat)
     else
+      flash[:errors] = @cat.errors.full_messages
       render :new
     end
+  end
+
+  def edit
+    @cat = Cat.find(params[:id])
   end
 
   def update
     @cat = Cat.find(params[:id])
     if @cat.update_attributes(cat_params)
       redirect_to cats_url
-      #redirect_to index
-      #render :index
     else
-      render(
-         :json => @cat.errors.full_messages,
-         :status => :unprocessable_entity
-       )
+      flash[:errors] = @cat.errors.full_messages
+      render :edit
     end
   end
 
-  def edit
-    @cat = Cat.find(params[:id])
-
-  end
-
-  def show
-    @cat = Cat.find(params[:id])
-
-  end
 
   def destroy
-
+    cat = Cat.find(params[:id])
+    cat.destroy
+    redirect_to cats_url
   end
 
-  def new
-    @cat = Cat.new
-  end
 
   private
 
