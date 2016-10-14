@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" content="The most lasagnay lasagna ever">
+    <title>Loren Loschiavo Recipe</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="script.js"> </script>
+  </head>
+  <body>
+    <header>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Appacademylogo.png/175px-Appacademylogo.png" alt="AA logo" height="100px" width="100px" />
+      <nav>
+        <ul>
+        <li><a href="#Description">Description</a></li>
+        <li><a href="#Ingredients">Ingredients</a></li>
+        <li><a href="#Directions">Directions</a></li>
+      </ul>
+      </nav>
+    </header>
+
+<!-- <main> -->
+
+
+    <h1>Lasagna</h1>
+
+
+<!-- Ingredients aside -->
+
+    <aside class="">
+      <h2>This is what you'll need</h2>
+      <a name="Ingredients"></a>
+      <ul class="ingredients-list">
+        <li>cup ricotta cheese</li>
+        <li>12 ounce shredded mozzarella cheese (about 3 cups)</li>
+        <li>3/4cup grated Parmesan cheese</li>
+        <li>2 eggs</li>
+        <li>1 pound ground beef</li>
+        <li>1 jar (45 ounces) of Three Cheese Italian Sauce</li>
+        <li>12 lasagna noodles, cooked and drained</li>
+      </ul>
+    </aside>
+
+<!-- Description and diretions section -->
+    <section>
+      <figure>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Lasagne_-_stonesoup.jpg/500px-Lasagne_-_stonesoup.jpg" alt="lasagne pic" />
+        <figcaption>Portrait of a <a href="https://en.wikipedia.org/wiki/Lasagne">Lasagne</a></figcaption>
+      </figure>
+
+  <!-- Description -->
+
+      <h2>Description</h2>
+      <a name="Description"></a>
+      <p>
+        <b>Lasagna</b> are wide, flat-shaped pasta, and possibly one of the oldest types of pasta. The word "lasagne", and, in many non-Italian languages, the singular "lasagna", can also refer to a dish made with several layers of lasagne sheets alternated with sauces and various other ingredients.
+      </p>
+
+<!-- Directions -->
+  <h2>How to make it</h2>
+      <ol>
+        <h3>Follow this step by step</h3>
+        <a name="Directions"></a>
+        <li>Stir the ricotta cheese, mozzarella cheese, 1/2 cup Parmesan cheese and eggs in a medium bowl and set it aside.</li>
+        <li>In a 3-quart saucepan over medium-high heat, cook the beef until it's well browned, stirring often to break up the meat. Pour off any fat. Stir the sauce in the saucepan.</li>
+        <li>Spoon 1 cup meat mixture in each of two 2-quart shallow baking dishes. Top each with 2 lasagna noodles and about 1 1/4 cups cheese mixture. Repeat the layers. Top with the remaining 2 lasagna noodles, remaining meat mixture and the Parmesan cheese.</li>
+        <li>Bake at 400°F. for 30 minutes or it's until hot and bubbling. Let stand for 10 minutes.</li>
+      </ol>
+    </section>
+
+<!-- Form section -->
+    <section id="reviews">
+      <form class="" action="/reviews" method="post" id="review-form">
+        <input type="text" name="name" value="">
+
+
+      <span>Whats your name?</span><br><br>
+        <label for="rating">How would you rate this?
+        1<input type="radio" value="1" checked>
+        2<input type="radio" value="2">
+        3<input type="radio" value="3">
+        4<input type="radio" value="4">
+        5<input type="radio" value="5">
+      </label><br><br>
+
+        <label for="expertise">Whats your cooking expertise?
+        <select id="expertise">
+          <option value="beginner" selected="true">Beginner</option>
+          <option value="intermediate">Intermediate</option>
+          <option value="advanced">Advanced</option>
+          <option value="professional">Professional</option>
+        </select> <br><br>
+        </label><br><br>
+
+        <textarea id="review"name="comment">Please leave a review</textarea><br><br>
+        <input type="submit" value="Submit">
+      </form>
+    </section>
+
+  <!-- </main> -->
+
+    <footer>
+      <p>
+        Original recipe by <a href="http://www.prego.com/recipe/classic-lasagna/">Prego</a>
+      </p>
+    </footer>
+
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-12345678-9', 'auto');
+    ga('send', 'pageview');
+
+    </script>
+  </body>
+
+</html>
