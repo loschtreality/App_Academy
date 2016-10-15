@@ -3,8 +3,19 @@
   <head>
     <meta charset="utf-8" content="The most lasagnay lasagna ever">
     <title>Loren Loschiavo Recipe</title>
+    <link rel="stylesheet" href="custom_css_reset.css">
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="script.js"> </script>
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-12345678-9', 'auto');
+    ga('send', 'pageview');
+
+    </script>
   </head>
   <body>
     <header>
@@ -18,7 +29,7 @@
       </nav>
     </header>
 
-<!-- <main> -->
+
 
 
     <h1>Lasagna</h1>
@@ -57,7 +68,7 @@
 
 <!-- Directions -->
   <h2>How to make it</h2>
-      <ol>
+      <ol id="directions">
         <h3>Follow this step by step</h3>
         <a name="Directions"></a>
         <li>Stir the ricotta cheese, mozzarella cheese, 1/2 cup Parmesan cheese and eggs in a medium bowl and set it aside.</li>
@@ -68,52 +79,48 @@
     </section>
 
 <!-- Form section -->
-    <section id="reviews">
-      <form class="" action="/reviews" method="post" id="review-form">
-        <input type="text" name="name" value="">
+<section id="reviews">
+ <h2>Reviews</h2>
+   <form action="/reviews" method="post">
+     <label for="name">Name</label>
+     <input id="name" type="text" name="name">
 
+     <label for="rating">Rating</label>
+     1<input type="radio" name="rating" value="1" checked>
+     2<input type="radio" name="rating" value="2">
+     3<input type="radio" name="rating" value="3">
+     4<input type="radio" name="rating" value="4">
+     5<input type="radio" name="rating" value="5">
 
-      <span>Whats your name?</span><br><br>
-        <label for="rating">How would you rate this?
-        1<input type="radio" value="1" checked>
-        2<input type="radio" value="2">
-        3<input type="radio" value="3">
-        4<input type="radio" value="4">
-        5<input type="radio" value="5">
-      </label><br><br>
+     <label for="expertise">Cooking Expertise</label>
 
-        <label for="expertise">Whats your cooking expertise?
-        <select id="expertise">
-          <option value="beginner" selected="true">Beginner</option>
-          <option value="intermediate">Intermediate</option>
-          <option value="advanced">Advanced</option>
-          <option value="professional">Professional</option>
-        </select> <br><br>
-        </label><br><br>
+     <select id="expertise" name="expertise">
+       <option value="Select Cooking Expertise" disabled="true" selected="true">Select Cooking Experise</option>
 
-        <textarea id="review"name="comment">Please leave a review</textarea><br><br>
-        <input type="submit" value="Submit">
-      </form>
-    </section>
+       <option value="Sometimes Cook">Sometimes Cook</option>
 
-  <!-- </main> -->
+       <option value="Cook Everyday">Cook Everyday</option>
 
+       <option value="Cooking is a Hobby">Cooking is a Hobby</option>
+
+       <option value="Professional Chef">Professional Chef</option>
+     </select>
+
+     <label>Review
+       <textarea name="review" cols="30" rows="10"></textarea>
+     </label>
+
+     <input type="submit" value="Submit Review">
+   </form>
+
+ </section>
     <footer>
       <p>
         Original recipe by <a href="http://www.prego.com/recipe/classic-lasagna/">Prego</a>
       </p>
     </footer>
 
-    <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-12345678-9', 'auto');
-    ga('send', 'pageview');
-
-    </script>
   </body>
 
 </html>

@@ -1,0 +1,19 @@
+html, body, body, header, img, nav, ul, li, a, aside, h2, section, figure, ol, span, input, label, option, textarea, form, footer {
+  color: inherit;
+  border: 0;
+  font: inherit;
+  margin: 0;
+  padding: 0;
+  text-align: inherit;
+  text-decoration: inherit;
+
+}
+
+ol, ul {
+  list-style: none;
+}
+
+input[type="radio"], select, input[type="submit"] {
+  cursor: pointer;
+  outline: none;
+}
