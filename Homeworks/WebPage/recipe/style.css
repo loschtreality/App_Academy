@@ -50,3 +50,37 @@ input[type="radio"] {
 h2 + .user_review {
   border-top: 1px solid black;
 }
+
+nav li {
+  display: inline-block;
+}
+
+
+nav li a {
+  display: inherit;
+  padding: 20px;
+}
+
+header img {
+  float: left;
+}
+
+body {
+  margin: 0 auto;
+  width: 900px;
+}
+
+main section{
+  display: inline-block;
+  width: 700px;
+}
+
+main aside{
+  float: left;
+  margin-right: 15px;
+  width: 180px;
+}
+
+main aside li, #directions li {
+  margin: 15px 0px 15px 0px;
+}
