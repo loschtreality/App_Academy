@@ -1,0 +1,59 @@
+html, body, h1, figure, figcaption, ul, li {
+  margin: 0px;
+  padding: 0px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.hanoi {
+  height: 650px;
+  width: 650px;
+}
+
+
+.tower {
+  border-bottom: 6px solid black;
+  display: inline-block;
+  height: 300px;
+  list-style: none;
+  width: 150px;
+  margin: 0px 30px 0px 30px;
+}
+
+.tower:hover {
+  border-bottom: 6px solid blue;
+}
+
+
+.diskOne {
+  background-color: green;
+  border: 5px solid grey;
+  border-radius: 5px;
+  height: 30px;
+  margin: 40px 0px 0px 50px;
+  width: 50px;
+}
+
+.diskTwo {
+  background-color: yellow;
+  border: 5px solid grey;
+  border-radius: 5px;
+  height: 30px;
+  margin: 50px 0px 15px 25px;
+  width: 100px;
+}
+.diskThree {
+  background-color: red;
+  border: 5px solid grey;
+  border-radius: 5px;
+  height: 30px;
+  margin: 65px 0px 0px 0px;
+  width: 150px;
+}
+
+.selected {
+  border-bottom: 6px solid red;
+
+}
