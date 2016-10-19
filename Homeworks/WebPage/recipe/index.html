@@ -19,7 +19,7 @@
   </head>
   <body>
     <header>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Appacademylogo.png/175px-Appacademylogo.png" alt="AA logo" height="100px" width="100px" />
+      <img class="clearfix" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Appacademylogo.png/175px-Appacademylogo.png" alt="AA logo"/>
       <nav>
         <ul>
         <li><a href="#Description">Description</a></li>
@@ -33,7 +33,7 @@
 
 
     <h1>Lasagna</h1>
-
+<hr>
     <main>
 
 <!-- Ingredients aside -->
@@ -86,7 +86,7 @@
  <h2>Reviews</h2>
    <form action="/reviews" method="post">
      <label for="name">Name</label>
-     <input id="name" type="text" name="name"> 
+     <input id="name" type="text" name="name">
 
      <label for="rating">Rating</label>
      1<input type="radio" name="rating" value="1" checked>
@@ -107,11 +107,11 @@
        <option value="Cooking is a Hobby">Cooking is a Hobby</option>
 
        <option value="Professional Chef">Professional Chef</option>
-     </select> 
+     </select>
 
-     <label>Review 
+     <label>Review
        <textarea name="review" cols="30" rows="10"></textarea>
-     </label> 
+     </label>
 
      <input type="submit" value="Submit Review">
    </form>

@@ -5,6 +5,10 @@ body {
   line-height: 1.5;
 }
 
+nav {
+  float: right;
+}
+
 
 h1 {
   font-size: 38px;
@@ -24,6 +28,7 @@ ol {
 
 header > img {
   width: 100px;
+  float: right;
 }
 
 ul li a{
@@ -71,7 +76,7 @@ body {
 }
 
 main section{
-  display: inline-block;
+  display: inline;
   width: 700px;
 }
 
@@ -83,4 +88,11 @@ main aside{
 
 main aside li, #directions li {
   margin: 15px 0px 15px 0px;
+}
+
+
+.clearfix:after {
+  content = "";
+  display: block;
+  clear: both;
 }
