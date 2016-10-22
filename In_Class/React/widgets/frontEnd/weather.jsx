@@ -7,34 +7,40 @@ class Weather extends React.Component {
 
   }
   componentDidMount(){
-    let currentLoc = navigator.geolocation
     let request = new XMLHttpRequest();
-      request.open('GET', `http://api.openweathermap.org/data/2.5/forecast/city?id=${currentLoc.getCurrentPosition()}&APPID=547c1d8dae27d716c0592f1808555334`, true);
-      request.onload = function() {
-        if (request.status >= 200 && request.status < 400) {
-          // Success!
-          console.log('SUCCESS');
-          let resp = request.responseText;
-          let node = document.getElementByClass("api")
-          node.innerHTML = resp;
-        } else {
-          console.log(currentLoc);
-          console.log("you done fucked up");
-          // We reached our target server, but it returned an error
 
-        }
-      };
+    navigator.geolocation.getCurrentPosition(function success(pos) {
+    this.apiRequest(pos.coords)
 
-    request.send();
+    }, function error(err) {
+      console.log(err, "error in geolocation");
+    })
+  }
+
+
+  apiRequest(currentLoc) {
+    request.open('GET', `http://api.openweathermap.org/data/2.5/forecast/city?id=${currentLoc}&APPID=547c1d8dae27d716c0592f1808555334`, true);
+    request.onload = function() {
+      if (request.status >= 200 && request.status < 400) {
+        // Success!
+        console.log('SUCCESS');
+        let resp = request.responseText;
+        let node = document.getElementByClass("api")
+        node.innerHTML = resp;
+      } else {
+        // We reached our target server, but it returned an error
+        console.log("recheck function");
+      }
+    };
+
+  request.send();
 
   }
 
   render () {
     return (
-      <div>
+      <div className="weather">
         <p className="api"></p>
-
-
       </div>
     )
   }
@@ -43,5 +49,3 @@ class Weather extends React.Component {
 
 
 export default Weather;
-
-//

@@ -18,6 +18,7 @@ module.exports = {
   },
   devtool: 'source-map',
   resolve: {
+    root: __dirname,
     extensions: ['', '.js', '.jsx']
   }
 };

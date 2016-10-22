@@ -8,6 +8,9 @@ html, body, div, article, p, ul, li {
   background: transparent;
 }
 
+body {
+  background-color: #999999;
+}
 
  /*=========== Tabs ===========*/
 
@@ -34,12 +37,10 @@ html, body, div, article, p, ul, li {
   cursor: crosshair;
 }
 
-
-
  /*=========== Clock ===========*/
 
 .clock {
-  margin: 15px;
+  margin: 15px auto;
   display: flex;
   justify-content: space-around;
   border: 1px solid black;
@@ -47,6 +48,7 @@ html, body, div, article, p, ul, li {
   background-size: contain;
   min-height: 300px;
   align-items: center;
+  width: 80%;
 }
 
 .clock span {
@@ -72,5 +74,3 @@ html, body, div, article, p, ul, li {
 
 
  /*=========== Weather ===========*/
-
- 
