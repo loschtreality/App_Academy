@@ -1,0 +1,76 @@
+html, body, div, article, p, ul, li {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  text-decoration: inherit;
+  color: inherit;
+  background: transparent;
+}
+
+
+ /*=========== Tabs ===========*/
+
+
+.tabApp {
+  margin: 0 auto;
+  border: 1px dashed black;
+  width: 40%;
+  height: 100px;
+}
+
+.tabs {
+  list-style: none;
+  background-color: red;
+  border: 1px solid black;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tabs li:hover{
+  font-weight: bold;
+  background-color: lightGrey;
+  cursor: crosshair;
+}
+
+
+
+ /*=========== Clock ===========*/
+
+.clock {
+  margin: 15px;
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid black;
+  background-image: url('../assets/clockImg.jpg');
+  background-size: contain;
+  min-height: 300px;
+  align-items: center;
+}
+
+.clock span {
+  color: white;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.date, .time {
+  color: white;
+  font-weight: bold;
+}
+
+.clock-container span, .clock-container p{
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+  font-size: 25px;
+  margin: 20px 0px;
+}
+
+
+
+ /*=========== Weather ===========*/
+
+ 
