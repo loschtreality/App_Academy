@@ -62,15 +62,7 @@
 	
 	var _store2 = _interopRequireDefault(_store);
 	
-	var _actions = __webpack_require__(174);
-	
-	var _actions2 = _interopRequireDefault(_actions);
-	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	// NOTE: only for testing
-	window.store = _store2.default;
-	window.selectCurrency = _actions2.default;
 	
 	document.addEventListener("DOMContentLoaded", function () {
 	  _reactDom2.default.render(_react2.default.createElement(_widget2.default, { store: _store2.default }), document.getElementById('root'));
