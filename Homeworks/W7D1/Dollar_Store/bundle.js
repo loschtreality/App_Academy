@@ -22564,7 +22564,10 @@
 	
 	  switch (action.type) {
 	    case _actions.Switch_Currency:
-	
+	      return {
+	        baseCurrency: action.baseCurrency,
+	        rates: action.rates
+	      };
 	    default:
 	      return state;
 	

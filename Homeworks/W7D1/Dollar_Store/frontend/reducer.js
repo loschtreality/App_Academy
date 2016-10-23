@@ -8,7 +8,10 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case Switch_Currency:
-
+      return {
+          baseCurrency: action.baseCurrency,
+          rates: action.rates
+      }
     default:
       return state
 
