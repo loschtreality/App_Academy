@@ -1,13 +1,14 @@
 {
-  "name": "currency_demo_skeleton",
+  "name": "dollar_store",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "webpack"
   },
   "keywords": [],
-  "author": "",
+  "author": "michael loschiavo",
   "license": "ISC",
   "dependencies": {
     "babel-core": "^6.13.2",
