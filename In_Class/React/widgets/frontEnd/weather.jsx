@@ -1,51 +1,60 @@
 import React from 'react'
 
 class Weather extends React.Component {
-  constructor() {
-    super()
-    this.state = {response: ""}
+    constructor() {
+        super()
+        this.state = {
+            response: ""
+        };
+        this.apiRequest = this.apiRequest.bind(this);
+    }
 
-  }
-  componentDidMount(){
-    let request = new XMLHttpRequest();
+    componentDidMount() {
+        navigator.geolocation.getCurrentPosition(this.apiRequest);
+    }
 
-    navigator.geolocation.getCurrentPosition(function success(pos) {
-    this.apiRequest(pos.coords)
+    apiRequest(location) {
+        let latitude = location.coords.latitude;
+        let longitude = location.coords.longitude;
 
-    }, function error(err) {
-      console.log(err, "error in geolocation");
-    })
-  }
+        let request = new XMLHttpRequest();
 
+        request.open('GET', `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&APPID=547c1d8dae27d716c0592f1808555334&units=imperial`, true);
+        request.onreadystatechange = () => {
+            if (request.status >= 200 && request.status < 400 && request.readyState === XMLHttpRequest.DONE) {
+                // Success!
+                let resp = JSON.parse(request.responseText);
+                this.setState({response: resp});
+            }
+        };
 
-  apiRequest(currentLoc) {
-    request.open('GET', `http://api.openweathermap.org/data/2.5/forecast/city?id=${currentLoc}&APPID=547c1d8dae27d716c0592f1808555334`, true);
-    request.onload = function() {
-      if (request.status >= 200 && request.status < 400) {
-        // Success!
-        console.log('SUCCESS');
-        let resp = request.responseText;
-        let node = document.getElementByClass("api")
-        node.innerHTML = resp;
-      } else {
-        // We reached our target server, but it returned an error
-        console.log("recheck function");
-      }
-    };
+        request.send();
 
-  request.send();
+    }
 
-  }
+    render() {
+        let temperature = this.state.response
+        let display;
 
-  render () {
-    return (
-      <div className="weather">
-        <p className="api"></p>
-      </div>
-    )
-  }
+        if (temperature) {
+            display = (
+                <div className="api">
+                  <span>{temperature.name}</span>
+                  <span>{`${temperature.main.temp} Farenheight`}</span>
+                </div>
+            )
+        } else {
+            display = (
+                <div className="api">Loading weather....</div>
+            )
+        }
+        return (
+            <div className="weather">
+                {display}
+            </div>
+        )
+    }
 
 }
-
 
 export default Weather;

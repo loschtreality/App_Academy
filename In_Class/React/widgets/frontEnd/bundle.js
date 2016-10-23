@@ -21663,10 +21663,10 @@
 /* 175 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -21684,60 +21684,83 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var Weather = function (_React$Component) {
-	  _inherits(Weather, _React$Component);
+	    _inherits(Weather, _React$Component);
 	
-	  function Weather() {
-	    _classCallCheck(this, Weather);
+	    function Weather() {
+	        _classCallCheck(this, Weather);
 	
-	    var _this = _possibleConstructorReturn(this, (Weather.__proto__ || Object.getPrototypeOf(Weather)).call(this));
+	        var _this = _possibleConstructorReturn(this, (Weather.__proto__ || Object.getPrototypeOf(Weather)).call(this));
 	
-	    _this.state = { response: "" };
-	
-	    return _this;
-	  }
-	
-	  _createClass(Weather, [{
-	    key: "componentDidMount",
-	    value: function componentDidMount() {
-	      var request = new XMLHttpRequest();
-	
-	      navigator.geolocation.getCurrentPosition(function success(pos) {
-	        this.apiRequest(pos.coords);
-	      }, function error(err) {
-	        console.log(err, "error in geolocation");
-	      });
+	        _this.state = {
+	            response: ""
+	        };
+	        _this.apiRequest = _this.apiRequest.bind(_this);
+	        return _this;
 	    }
-	  }, {
-	    key: "apiRequest",
-	    value: function apiRequest(currentLoc) {
-	      request.open('GET', "http://api.openweathermap.org/data/2.5/forecast/city?id=" + currentLoc + "&APPID=547c1d8dae27d716c0592f1808555334", true);
-	      request.onload = function () {
-	        if (request.status >= 200 && request.status < 400) {
-	          // Success!
-	          console.log('SUCCESS');
-	          var resp = request.responseText;
-	          var node = document.getElementByClass("api");
-	          node.innerHTML = resp;
-	        } else {
-	          // We reached our target server, but it returned an error
-	          console.log("recheck function");
+	
+	    _createClass(Weather, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            navigator.geolocation.getCurrentPosition(this.apiRequest);
 	        }
-	      };
+	    }, {
+	        key: 'apiRequest',
+	        value: function apiRequest(location) {
+	            var _this2 = this;
 	
-	      request.send();
-	    }
-	  }, {
-	    key: "render",
-	    value: function render() {
-	      return _react2.default.createElement(
-	        "div",
-	        { className: "weather" },
-	        _react2.default.createElement("p", { className: "api" })
-	      );
-	    }
-	  }]);
+	            var latitude = location.coords.latitude;
+	            var longitude = location.coords.longitude;
 	
-	  return Weather;
+	            var request = new XMLHttpRequest();
+	
+	            request.open('GET', 'http://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&APPID=547c1d8dae27d716c0592f1808555334&units=imperial', true);
+	            request.onreadystatechange = function () {
+	                if (request.status >= 200 && request.status < 400 && request.readyState === XMLHttpRequest.DONE) {
+	                    // Success!
+	                    var resp = JSON.parse(request.responseText);
+	                    _this2.setState({ response: resp });
+	                }
+	            };
+	
+	            request.send();
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var temperature = this.state.response;
+	            var display = void 0;
+	
+	            if (temperature) {
+	                display = _react2.default.createElement(
+	                    'div',
+	                    { className: 'api' },
+	                    _react2.default.createElement(
+	                        'span',
+	                        null,
+	                        temperature.name
+	                    ),
+	                    _react2.default.createElement(
+	                        'span',
+	                        null,
+	                        temperature.main.temp + ' Farenheight'
+	                    )
+	                );
+	            } else {
+	                display = _react2.default.createElement(
+	                    'div',
+	                    { className: 'api' },
+	                    'Loading weather....'
+	                );
+	            }
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'weather' },
+	                display
+	            );
+	        }
+	    }]);
+	
+	    return Weather;
 	}(_react2.default.Component);
 	
 	exports.default = Weather;
