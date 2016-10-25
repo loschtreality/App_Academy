@@ -1,5 +1,7 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import rootReducer from '../reducers/root_reducer';
+import createLogger from 'redux-logger';
+
 
 
 const preloadedState = {
@@ -8,6 +10,9 @@ const preloadedState = {
   isRecording: false,
   isPlaying: false
  }
+
+const logger = createLogger()
+
 
 const configureStore = (preloadedState) => (
   createStore(
